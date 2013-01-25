@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8" />
+    <script type="text/javascript" src="http://code.jquery.com/jquery-1.5.js"></script>
+    <script type="text/javascript">
+        $(document).ready(function() {
+            $("form#form").submit(function() {
+                alert('999');
+                var username = $('#username').attr('value');
+                $.ajax({
+                    type: 'POST',
+                    url: 'process.php',
+                    data: 'username=' + username,
+                    success: function() {
+                        $('form#form').hide(function() {
+                            $.get('process.php', function(data) {
+                                $('.results').html(data);
+                            });
+                        });
+                    }
+                });
+                return false;
+            });
+        });
+    </script>
+
+</head>
+
+<body id="body">
+
+<form id="form" method="post">
+    <p>Your username: <input type="text" value="" name="username" id="username" /></p>
+    <input type="submit" id="submit" value="Submit" />
+</form>
+
+<div class="results"></div>
+
+</body>
+
+</html>
