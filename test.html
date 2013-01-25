@@ -1,51 +1,70 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <HTML xmlns:fb="http://www.facebook.com/2008/fbml">
 <HEAD>
 <SCRIPT SRC="http://code.jquery.com/jquery-1.7.2.js" type="text/javascript"></SCRIPT>
-</HEAD>
+<!-- Alan : added "type='text/javascript'" -->
 
-<BODY>
-<H1><FONT FACE="verdana" COLOR="green">Welcome</FONT></H1>
-<CENTER><div class="InfoDiv">xxx</div></CENTER>
-</BODY>
-<DIV ID="fb-root"></DIV>
-<div class='result'></div>
-<SCRIPT></SCRIPT>
-</HTML>
+<script type='text/javascript'>  // Alan : added "type='text/javascript'" 
 
+/*
+<!--//
+Get the data using ajax
+//-->
+*/
 
-<script type="text/javascript">
+// Alan
+// Invlid Javascript multiple line commnet
+// should be use /* */
+/*
+Get the data using ajax
+*/
 
-//$.get(
-//    "/getinfo/1", {},
-//    function(data) { $('.InfoDiv').html(data); },
-//    "json"
-//);
-
-$.getJSON(
-    "/getinfo/1", 
-    function(data)
-    {
-       var row = '';
-       $.each(data, function(key,val){
-          row +=  "<tr><td>" + key +"</td><td> " +  val + "</td></tr>";
-
-       });
+/*
+ Alan
+ 1. Need to put the necessay jquery code in to $().ready or $(document).ready() function
+ 2. This is to ensure the DOM document is fully loaded before being execute, otherwise will not be executed sucessfully
+ 3. Assumption : The return result should be inserted in "div.result" HTML element, instead of "dev.InfoDiv"
+ 4. Process and format the return JSON encoded data, before directly insert into the "div.result" element (Assumption)
+ 
+*/
+$().ready(function() {
+  $.getJSON(
+      "/getinfo/1", 
+      function(data)
+      {
+         var row = '';
+         $.each(data, function(key,val){
+            row +=  "<tr><td>" + key +"</td><td> " +  val + "</td></tr>";
+         });
        
-       
-       output = "<table border='1'>" +
+        output = "<table border='1'>" +
                  "<tr><th>Field</th><th>Value</th></tr>" +
                  row + 
                  "</table>"
-       
-       
-                $('.InfoDiv').html(output);
-    }
+                $('.result').html(output);
+    });
+});
+
+/*
+$.get(
+    "/getinfo/111", {},
+    function(data) { $('.InfoDiv').html(data); }
 );
-
-//$.get('getinfo.php/1', function(data) {
-//  $('.result').html(data);
-//  alert('Load was performed.');
-//});
-
-
+*/
 </script>
+</HEAD>
+
+
+<BODY>
+<H1><FONT FACE="verdana" COLOR="green">Welcome</FONT></H1>
+<CENTER><div class="InfoDiv"></div></CENTER> <!-- Alan : The following DIV element seems redundant. -->
+<!--
+Alan :
+1. <FONT> tag is deprecated in HTML 4.01.  Should replace these with CSS equivalent for ease of future upgrade and support.
+2. <CENTER> tag is deprecated in HTML 4.01.  Should replace these with CSS equivalent for ease of future upgrade and support.
+-->
+</BODY>
+<DIV ID="fb-root"></DIV>  <!-- Alan : The following DIV element seems redundant. -->
+<div class='result'></div>
+<SCRIPT></SCRIPT>  <!-- Alan : The following SCRIPT element seems redundant. -->
+</HTML>
