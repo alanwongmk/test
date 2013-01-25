@@ -1,5 +1,19 @@
 <?php
 
+  /*
+   -----------------------------------------------------------------------------
+   Comments and Assumptions
+   -----------------------------------------------------------------------------
+   Author : Alan Wong
+   Date   : 25-Jan-2013
+   
+   1. Assume range can work in both descending and ascending order
+   2. No numerical validation implemented
+   3. Allow to user to select each task or both
+   4. Input interface via HTML form
+   5. PHP programming language is assumed
+  */  
+
   $start_number = @$_REQUEST['start'];
   $end_number = @$_REQUEST['end'];
   $task_type = @$_REQUEST['type'];
