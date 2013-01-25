@@ -1,0 +1,51 @@
+<HTML xmlns:fb="http://www.facebook.com/2008/fbml">
+<HEAD>
+<SCRIPT SRC="http://code.jquery.com/jquery-1.7.2.js" type="text/javascript"></SCRIPT>
+</HEAD>
+
+<BODY>
+<H1><FONT FACE="verdana" COLOR="green">Welcome</FONT></H1>
+<CENTER><div class="InfoDiv">xxx</div></CENTER>
+</BODY>
+<DIV ID="fb-root"></DIV>
+<div class='result'></div>
+<SCRIPT></SCRIPT>
+</HTML>
+
+
+<script type="text/javascript">
+
+//$.get(
+//    "/getinfo/1", {},
+//    function(data) { $('.InfoDiv').html(data); },
+//    "json"
+//);
+
+$.getJSON(
+    "/getinfo/1", 
+    function(data)
+    {
+       var row = '';
+       $.each(data, function(key,val){
+          row +=  "<tr><td>" + key +"</td><td> " +  val + "</td></tr>";
+
+       });
+       
+       
+       output = "<table border='1'>" +
+                 "<tr><th>Field</th><th>Value</th></tr>" +
+                 row + 
+                 "</table>"
+       
+       
+                $('.InfoDiv').html(output);
+    }
+);
+
+//$.get('getinfo.php/1', function(data) {
+//  $('.result').html(data);
+//  alert('Load was performed.');
+//});
+
+
+</script>
