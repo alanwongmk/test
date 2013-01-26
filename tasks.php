@@ -7,6 +7,7 @@
    Author : Alan Wong
    Date   : 25-Jan-2013
    Version : 1.1
+   Note : Sat Jan 26 08:37:42 SGT 2013
    
    1. Assume range can work in both descending and ascending order
    2. No numerical validation implemented
