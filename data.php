@@ -25,7 +25,7 @@ class baseObj
     {
         //$this->mysql = new mysqli("localhost", "user", "password", "database");
         $this->mysql = new mysqli("localhost", "root", "", "property");
-
+        
         # Hardcoding of database related into, should be stored in some kind of configuration file instead.
         # This is especially the case for handling of development, testing and production servers
         # For the purpose of testing, changed above database attributes deemed appropriated.
