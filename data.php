@@ -1,14 +1,14 @@
 <?php
 
+# Note : Sat Jan 26 08:37:42 SGT 2013
+
 # General Comments
-# 1. Is is better to split each individual class into approprite file in filesystem, instead of having all classes saved in file single file
-# 2. We either 'require'  this file, or use of __autoload function to require these file as require
+# 1. Is is better to split each individual class into approprite file in filesystem, instead of having all classes stored in file single file
+# 2. We either 'require' this file or use of __autoload function to require these files as required
 # 3. This file will be easy managed when grow into significate size
 # 4. No appropriate comment for each class and function
-
-# 5. Assume we should use the the same database storage
+# 5. Assumption : We should use the the same database storage engine
 # 6. During testing create all tables using InnnoDB storage engine
-
 
 // Alan :
 # Based class : baseObj should be defined as 'abstract' class

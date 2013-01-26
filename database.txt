@@ -1,3 +1,6 @@
+
+Note : Sat Jan 26 08:37:42 SGT 2013
+
 CREATE TABLE Property (
     ID BIGINT AUTO_INCREMENT PRIMARY KEY,
     Type TINYINT default 1,
@@ -27,4 +30,14 @@ CREATE TABLE Condo (
 
 # alan
 # 1075 - Incorrect table definition; there can be only one auto column and it must be defined as a key
-# Supports transactions, row-level locking, and foreign keys
+# Define "PID INT NOT NULL" as "PID BIGINT NOT NULL"
+
+Changed as follow
+==================
+CREATE TABLE Condo (
+    ID BIGINT AUTO_INCREMENT PRIMARY KEY,
+    PID BIGINT NOT NULL,
+    SwimmingPool TINYINT default 0,
+    INDEX idx_PID (PID), 
+    FOREIGN KEY (PID) REFERENCES Property(ID)
+) ENGINE=InnoDB;
